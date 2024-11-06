@@ -158,50 +158,58 @@
     <iframe id="spreadsheetKD" src="https://docs.google.com/spreadsheets/d/1mFj67Q2l_vdwcyhlL8BGV42TR4vFw6OY4xXzoqL2iXY/edit"></iframe>
 
     <script>
-    document.getElementById('login-form').addEventListener('submit', function(e) {
-        e.preventDefault(); // Ngăn chặn hành vi mặc định của form
-
-        const username = document.getElementById('username');
-        const password = document.getElementById('password');
-
-        const usernameValue = username.value;
-        const passwordValue = password.value;
-
-        // Kiểm tra thông tin đăng nhập
-        if (usernameValue === 'VIVADDT' && passwordValue === '123456') {
-            // Hiện iframe
-            const spreadsheetDDT = document.getElementById('spreadsheetDDT');
-            spreadsheetDDT.style.display = 'block';
-
-            // Xóa thông tin đăng nhập
-            username.value = '';
-            password.value = '';
-
-            // Chuyển hướng sau 10 giây
-            setTimeout(() => {
-                window.location.href = 'https://coffeetogo.kasco.vn/kas/Admin/Home';
-            }, 10000); // 10000 ms = 10 giây
-
-        } 
-        else if (usernameValue === 'VIVAKD' && passwordValue === '123456') {
-            // Hiện iframe
-            const spreadsheetKD = document.getElementById('spreadsheetKD');
-            spreadsheetKD.style.display = 'block';
-
-            // Xóa thông tin đăng nhập
-            username.value = '';
-            password.value = '';
-
-            // Chuyển hướng sau 10 giây
-            setTimeout(() => {
-                window.location.href = 'https://coffeetogo.kasco.vn/kas/Admin/Home';
-            }, 10000); // 10000 ms = 10 giây
-
-        } else {
-            alert('Thông tin đăng nhập không chính xác!');
-        }
-    });
-</script>
-
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault(); // Ngăn chặn hành vi mặc định của form
+    
+            const username = document.getElementById('username');
+            const password = document.getElementById('password');
+    
+            const usernameValue = username.value;
+            const passwordValue = password.value;
+    
+            // Kiểm tra thông tin đăng nhập
+            if (usernameValue === 'VIVADDT' && passwordValue === '123456') {
+                // Hiện iframe
+                const spreadsheetDDT = document.getElementById('spreadsheetDDT');
+                spreadsheetDDT.style.display = 'block';
+    
+                // Xóa thông tin đăng nhập
+                username.value = '';
+                password.value = '';
+                
+                // Xóa thông tin khỏi bộ nhớ
+                username.blur();
+                password.blur();
+    
+                // Chuyển hướng sau 10 giây
+                setTimeout(() => {
+                    window.location.href = 'https://coffeetogo.kasco.vn/kas/Admin/Home';
+                }, 480000); // 10000 ms = 10 giây
+    
+            } 
+            else if (usernameValue === 'VIVAKD' && passwordValue === '123456') {
+                // Hiện iframe
+                const spreadsheetKD = document.getElementById('spreadsheetKD');
+                spreadsheetKD.style.display = 'block';
+    
+                // Xóa thông tin đăng nhập
+                username.value = '';
+                password.value = '';
+                
+                // Xóa thông tin khỏi bộ nhớ
+                username.blur();
+                password.blur();
+    
+                // Chuyển hướng sau 10 giây
+                setTimeout(() => {
+                    window.location.href = 'https://coffeetogo.kasco.vn/kas/Admin/Home';
+                }, 480000); // 10000 ms = 10 giây
+    
+            } else {
+                alert('Thông tin đăng nhập không chính xác!');
+            }
+        });
+    </script>
+    
 </body>
 </html>
