@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <title>Login Form</title>
+    <link rel="icon" href="./icon.jpg" type="image/png">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
@@ -140,7 +141,7 @@
         <h3>Login Here</h3>
 
         <label for="username">Username</label>
-        <input type="text" placeholder="Email or Phone" id="username">
+        <input type="text" placeholder="Username" id="username">
 
         <label for="password">Password</label>
         <input type="password" placeholder="Password" id="password">
@@ -169,20 +170,22 @@
                 const spreadsheetDDT = document.getElementById('spreadsheetDDT');
                 spreadsheetDDT.style.display = 'block';
 
-                // Ẩn iframe sau 5 giây
+                // Chuyển hướng sau 10 giây
                 setTimeout(() => {
-                    spreadsheetDDT.style.display = 'none';
-                }, 600000); // 5000 ms = 5 giây
+                    window.location.href = 'https://coffeetogo.kasco.vn/kas/Admin/Home';
+                }, 10000); // 10000 ms = 10 giây
+
             } 
             else if(username === 'VIVAKD' && password === '123456') {
                 // Hiện iframe
                 const spreadsheetKD = document.getElementById('spreadsheetKD');
                 spreadsheetKD.style.display = 'block';
 
-                // Ẩn iframe sau 5 giây
+                // Chuyển hướng sau 10 giây
                 setTimeout(() => {
-                    spreadsheetKD.style.display = 'none';
-                }, 600000); // 5000 ms = 5 giây
+                    window.location.href = 'https://coffeetogo.kasco.vn/kas/Admin/Home';
+                }, 10000); // 10000 ms = 10 giây
+
             }
             else  {
                 alert('Thông tin đăng nhập không chính xác!');
