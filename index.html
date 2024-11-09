@@ -6,6 +6,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
         * {
             padding: 0;
@@ -174,130 +175,108 @@
     <!-- Iframe để nhúng Google Sheets -->
     <iframe id="spreadsheetDDT" src="https://docs.google.com/spreadsheets/d/1Hp3drdUp9sibPnCb7_ag9ScZ7U0AvgbIfEpUM5hINJI/edit?usp=drivesdk"></iframe>
     <iframe id="spreadsheetKD" src="https://docs.google.com/spreadsheets/d/1mFj67Q2l_vdwcyhlL8BGV42TR4vFw6OY4xXzoqL2iXY/edit"></iframe>
-
+    
     <script>
         document.getElementById('login-form').addEventListener('submit', function(e) {
-            e.preventDefault(); // Ngăn chặn hành vi mặc định của form
-    
-            const username = document.getElementById('username');
-                       const password = document.getElementById('password');
-    
-            const usernameValue = username.value;
-            const passwordValue = password.value;
-    
-            // Kiểm tra thông tin đăng nhập
-            if (usernameValue === 'ASDFG' && passwordValue === '123456') {
-                // Hiện iframe
-                const spreadsheetDDT = document.getElementById('spreadsheetDDT');
-                spreadsheetDDT.style.display = 'block';
-    
-                // Xóa thông tin đăng nhập
-                username.value = '';
-                password.value = '';
-                
-                // Xóa thông tin khỏi bộ nhớ
-                username.blur();
-                password.blur();
-    
-                // Chạy đồng hồ đếm ngược
-                startCountdown();
+    e.preventDefault(); // Ngăn chặn hành vi mặc định của form
 
-                // Chuyển hướng sau 10 phút
-                setTimeout(() => {
-                    window.location.href = 'https://coffeetogo.kasco.vn/kas/Admin/Home';
-                }, 600000); // 10 phút = 600000 ms
-    
-            } 
-            else if (usernameValue === 'QWERT' && passwordValue === '123456') {
-                // Hiện iframe
-                const spreadsheetKD = document.getElementById('spreadsheetKD');
-                spreadsheetKD.style.display = 'block';
-    
-                // Xóa thông tin đăng nhập
-                username.value = '';
-                password.value = '';
-                
-                // Xóa thông tin khỏi bộ nhớ
-                username.blur();
-                password.blur();
-    
-                // Chạy đồng hồ đếm ngược
-                startCountdown();
+    const username = document.getElementById('username');
+    const password = document.getElementById('password');
 
-                // Chuyển hướng sau 10 phút
-                setTimeout(() => {
-                    window.location.href = 'https://coffeetogo.kasco.vn/kas/Admin/Home';
-                }, 600000); // 10 phút = 600000 ms
-    
-            } else {
-                alert('Thông tin đăng nhập không chính xác!');
-            }
+    const usernameValue = username.value.trim();
+    const passwordValue = password.value.trim();
+
+    // Kiểm tra thông tin đăng nhập
+    if (isValidLogin(usernameValue, passwordValue)) {
+        let iframeToShow;
+        if (usernameValue === 'ASDFG' && passwordValue === '123456') {
+            iframeToShow = document.getElementById('spreadsheetDDT');
+        } else if (usernameValue === 'QWERT' && passwordValue === '123456') {
+            iframeToShow = document.getElementById('spreadsheetKD');
+        }
+
+        // Hiển thị iframe tương ứng
+        if (iframeToShow) {
+            iframeToShow.style.display = 'block';
+            startCountdown(); // Bắt đầu đếm ngược
+
+            // Xóa thông tin đăng nhập
+            username.value = '';
+            password.value = '';
+            username.blur();
+            password.blur();
+        }
+    } else {
+        // Thông báo lỗi khi đăng nhập không hợp lệ
+        Swal.fire({
+            title: 'Thông tin đăng nhập không chính xác!',
+            text: 'Vui lòng kiểm tra lại username và password.',
+            icon: 'error',
+            confirmButtonText: 'OK',
         });
+    }
+});
 
-        let countdownInterval;
+// Kiểm tra tính hợp lệ của username và password
+function isValidLogin(username, password) {
+    return (username === 'ASDFG' && password === '123456') ||
+           (username === 'QWERT' && password === '123456');
+}
 
-        function startCountdown() {
-            let timeLeft = 600; // 10 phút = 600 giây
-            const countdownElem = document.createElement('div');
-            countdownElem.classList.add('countdown');
-            countdownElem.innerHTML = formatTime(timeLeft);
-            document.body.appendChild(countdownElem);
+let countdownInterval;
 
-            countdownInterval = setInterval(function() {
-                timeLeft--;
-                countdownElem.innerHTML = formatTime(timeLeft);
+function startCountdown() {
+    let timeLeft = 600; // 10 phút = 600 giây
+    const countdownElem = document.createElement('div');
+    countdownElem.classList.add('countdown');
+    countdownElem.innerHTML = formatTime(timeLeft);
+    document.body.appendChild(countdownElem);
 
-                // Cập nhật màu sắc theo phần trăm thời gian còn lại
-                updateColor(countdownElem, timeLeft);
+    countdownInterval = setInterval(function() {
+        timeLeft--;
+        countdownElem.innerHTML = formatTime(timeLeft);
 
-                // Khi thời gian còn lại là 0, dừng đếm ngược
-                if (timeLeft <= 0) {
-                    clearInterval(countdownInterval);
-                    countdownElem.innerHTML = '00:00'; // Đặt lại khi kết thúc
-                }
-            }, 1000); // Mỗi giây
+        // Cập nhật màu sắc theo phần trăm thời gian còn lại
+        updateColor(countdownElem, timeLeft);
 
-            // Hàm format để hiển thị thời gian đúng định dạng
-            function formatTime(time) {
-                const minutes = Math.floor(time / 60);
-                const seconds = time % 60;
-                return `${padZero(minutes)}:${padZero(seconds)}`;
-            }
-
-            function padZero(num) {
-                return num < 10 ? '0' + num : num;
-            }
+        // Khi thời gian còn lại là 0, dừng đếm ngược và chuyển trang
+        if (timeLeft <= 0) {
+            clearInterval(countdownInterval);
+            countdownElem.innerHTML = '00:00'; // Đặt lại khi kết thúc
+            window.location.href = 'https://coffeetogo.kasco.vn/kas/Admin/Home'; // Chuyển hướng sau khi đếm ngược xong
         }
+    }, 1000); // Mỗi giây
 
-        // Cập nhật màu sắc và màu chữ của đồng hồ đếm ngược dựa trên phần trăm thời gian
-        function updateColor(countdownElem, timeLeft) {
-            const percentage = timeLeft / 600; // Tính phần trăm thời gian còn lại (600 giây ban đầu)
+    // Hàm format để hiển thị thời gian đúng định dạng
+    function formatTime(time) {
+        const minutes = Math.floor(time / 60);
+        const seconds = time % 60;
+        return `${padZero(minutes)}:${padZero(seconds)}`;
+    }
 
-            if (percentage > 0.5) {
-                // Từ 100% đến 51%, màu xanh lá
-                countdownElem.style.background = 'linear-gradient(to right, #00FF00, #00FF00)';
-                countdownElem.style.color = '#FFFFFF'; // Màu chữ trắng
-            } 
-            else if (percentage > 0.49 && percentage <= 0.75) {
-                // Từ 50% đến 75%, chuyển dần từ xanh lá sang vàng
-                countdownElem.style.background = 'linear-gradient(to right, #00FF00, #FFFF00)';
-                countdownElem.style.color = '#FFFFFF'; // Màu chữ trắng
-            } 
-            else if (percentage > 0.25 && percentage <= 0.49) {
-                // Từ 25% đến 49%, màu vàng, màu chữ đỏ
-                countdownElem.style.background = 'linear-gradient(to right, #FFFF00, #FFFF00)';
-                countdownElem.style.color = '#FF0000'; // Màu chữ đỏ
-            }  
-            else if (percentage > 0.1 && percentage <= 0.25) {
-                // Từ 10% đến 25%, chuyển dần từ vàng sang đỏ
-                countdownElem.style.background = 'linear-gradient(to right, #FFFF00, #FF0000)';
-                countdownElem.style.color = '#FFFFFF'; // Màu chữ trắng
-            } else {
-                // Dưới 10%, màu đỏ, màu chữ vàng
-                countdownElem.style.background = 'linear-gradient(to right, #FF0000, #FF0000)';
-                countdownElem.style.color = '#FFFF00'; // Màu chữ vàng
-            }
-        }
+    function padZero(num) {
+        return num < 10 ? '0' + num : num;
+    }
+}
+
+// Cập nhật màu sắc và màu chữ của đồng hồ đếm ngược dựa trên phần trăm thời gian
+function updateColor(countdownElem, timeLeft) {
+    const percentage = timeLeft / 600; // Tính phần trăm thời gian còn lại (600 giây ban đầu)
+
+    // Thêm transition vào CSS của countdownElem để làm mượt các hiệu ứng chuyển màu
+    countdownElem.style.transition = 'background 1s ease, color 1s ease'; // Thêm transition vào background và color
+
+    if (percentage > 0.5) {
+        countdownElem.style.background = 'linear-gradient(to right, #00FF00, #00FF00)';
+        countdownElem.style.color = '#FFFFFF'; // Màu chữ trắng
+    } else if (percentage > 0.25) {
+        countdownElem.style.background = 'linear-gradient(to right, #FFFF00, #FFFF00)';
+        countdownElem.style.color = '#FF0000'; // Màu chữ đỏ
+    } else {
+        countdownElem.style.background = 'linear-gradient(to right, #FF0000, #FF0000)';
+        countdownElem.style.color = '#FFFF00'; // Màu chữ vàng
+    }
+}
 
     </script>
 </body>
