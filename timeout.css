@@ -1,0 +1,33 @@
+.timer-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: conic-gradient(
+      green 0% 50%, 
+      yellow 50% 75%, 
+      red 75% 100%
+    );
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 10px;
+    right: 10px;
+  }
+
+  .timer-text {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+  }
+
+  .timer-inner {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    background-color: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }

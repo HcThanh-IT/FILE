@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Các anh các chị báo 🐆</title>
+    <link rel="icon" href="./icon.jpg" type="image/png">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #212121;
+        }
+        .background {
+            width: 430px;
+            height: 520px;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            left: 50%;
+            top: 50%;
+        }
+        .background .shape {
+            height: 200px;
+            width: 200px;
+            position: absolute;
+            border-radius: 50%;
+        }
+        .shape:first-child {
+            background: linear-gradient(#1845ad, #23a2f6);
+            left: -80px;
+            top: -80px;
+        }
+        .shape:last-child {
+            background: linear-gradient(to right, #ff512f, #f09819);
+            right: -30px;
+            bottom: -80px;
+        }
+        form {
+            height: 520px;
+            width: 400px;
+            background-color: rgba(255, 255, 255, 0.13);
+            position: absolute;
+            transform: translate(-50%, -50%);
+            top: 50%;
+            left: 50%;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+            padding: 50px 35px;
+        }
+        form * {
+            font-family: 'Poppins', sans-serif;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+            outline: none;
+            border: none;
+        }
+        form h3 {
+            font-size: 32px;
+            font-weight: 500;
+            line-height: 42px;
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-top: 30px;
+            font-size: 16px;
+            font-weight: 500;
+        }
+        input {
+            display: block;
+            height: 50px;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.07);
+            border-radius: 3px;
+            padding: 0 10px;
+            margin-top: 8px;
+            font-size: 14px;
+            font-weight: 300;
+        }
+        ::placeholder {
+            color: #e5e5e5;
+        }
+        button {
+            margin-top: 50px;
+            width: 100%;
+            background-color: #ffffff;
+            color: #080710;
+            padding: 15px 0;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .social {
+            margin-top: 30px;
+            display: flex;
+        }
+        .social div {
+            background: red;
+            width: 150px;
+            border-radius: 3px;
+            padding: 5px 10px 10px 5px;
+            background-color: rgba(255, 255, 255, 0.27);
+            color: #eaf0fb;
+            text-align: center;
+        }
+        .social div:hover {
+            background-color: rgba(255, 255, 255, 0.47);
+        }
+        .social .fb {
+            margin-left: 25px;
+        }
+        .social i {
+            margin-right: 4px;
+        }
+        /* Style cho iframe */
+        #spreadsheetDDT, #spreadsheetKD {
+            display: none; /* Ẩn iframe ban đầu */
+            width: 100%;
+            height: 95vh;
+            border: none;
+            border-radius: 10px;
+            margin-top: 20px;
+            position: relative;
+            z-index: 9999; /* Đặt z-index cao */
+        }
+        /* Đếm ngược hình tròn */
+        .countdown {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            color: white;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 10000;
+            font-weight: bold;
+            text-align: center;
+            transition: background 1s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    <form id="login-form">
+        <h3>Login Here</h3>
+        <label for="username">Username</label>
+        <input type="text" placeholder="Username" id="username">
+
+        <label for="password">Password</label>
+        <input type="password" placeholder="Password" id="password">
+
+        <button type="submit">Log In</button>
+        <div class="social">
+            <div class="go"><i class="fab fa-google"></i> Google</div>
+            <div class="fb"><i class="fab fa-facebook"></i> Facebook</div>
+        </div>
+    </form>
+
+    <!-- Iframe để nhúng Google Sheets -->
+    <iframe id="spreadsheetDDT" src="https://docs.google.com/spreadsheets/d/1Hp3drdUp9sibPnCb7_ag9ScZ7U0AvgbIfEpUM5hINJI/edit?usp=drivesdk"></iframe>
+    <iframe id="spreadsheetKD" src="https://docs.google.com/spreadsheets/d/1mFj67Q2l_vdwcyhlL8BGV42TR4vFw6OY4xXzoqL2iXY/edit"></iframe>
+    
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+    e.preventDefault(); // Ngăn chặn hành vi mặc định của form
+
+    const username = document.getElementById('username');
+    const password = document.getElementById('password');
+
+    const usernameValue = username.value.trim();
+    const passwordValue = password.value.trim();
+
+    // Kiểm tra thông tin đăng nhập
+    if (isValidLogin(usernameValue, passwordValue)) {
+        let iframeToShow;
+        if (usernameValue === 'ASDFG' && passwordValue === '123456') {
+            iframeToShow = document.getElementById('spreadsheetDDT');
+        } else if (usernameValue === 'QWERT' && passwordValue === '123456') {
+            iframeToShow = document.getElementById('spreadsheetKD');
+        }
+
+        // Hiển thị iframe tương ứng
+        if (iframeToShow) {
+            iframeToShow.style.display = 'block';
+            startCountdown(); // Bắt đầu đếm ngược
+
+            // Xóa thông tin đăng nhập
+            username.value = '';
+            password.value = '';
+            username.blur();
+            password.blur();
+        }
+    } else {
+        // Thông báo lỗi khi đăng nhập không hợp lệ
+        Swal.fire({
+            title: 'Thông tin đăng nhập không chính xác!',
+            text: 'Vui lòng kiểm tra lại username và password.',
+            icon: 'error',
+            confirmButtonText: 'OK',
+        });
+    }
+});
+
+// Kiểm tra tính hợp lệ của username và password
+function isValidLogin(username, password) {
+    return (username === 'ASDFG' && password === '123456') ||
+           (username === 'QWERT' && password === '123456');
+}
+
+let countdownInterval;
+
+function startCountdown() {
+    let timeLeft = 600; // 10 phút = 600 giây
+    const countdownElem = document.createElement('div');
+    countdownElem.classList.add('countdown');
+    countdownElem.innerHTML = formatTime(timeLeft);
+    document.body.appendChild(countdownElem);
+
+    countdownInterval = setInterval(function() {
+        timeLeft--;
+        countdownElem.innerHTML = formatTime(timeLeft);
+
+        // Cập nhật màu sắc theo phần trăm thời gian còn lại
+        updateColor(countdownElem, timeLeft);
+
+        // Khi thời gian còn lại là 0, dừng đếm ngược và chuyển trang
+        if (timeLeft <= 0) {
+            clearInterval(countdownInterval);
+            countdownElem.innerHTML = '00:00'; // Đặt lại khi kết thúc
+            window.location.href = 'https://coffeetogo.kasco.vn/kas/Admin/Home'; // Chuyển hướng sau khi đếm ngược xong
+        }
+    }, 1000); // Mỗi giây
+
+    // Hàm format để hiển thị thời gian đúng định dạng
+    function formatTime(time) {
+        const minutes = Math.floor(time / 60);
+        const seconds = time % 60;
+        return `${padZero(minutes)}:${padZero(seconds)}`;
+    }
+
+    function padZero(num) {
+        return num < 10 ? '0' + num : num;
+    }
+}
+
+// Cập nhật màu sắc và màu chữ của đồng hồ đếm ngược dựa trên phần trăm thời gian
+function updateColor(countdownElem, timeLeft) {
+    const percentage = timeLeft / 600; // Tính phần trăm thời gian còn lại (600 giây ban đầu)
+
+    // Thêm transition vào CSS của countdownElem để làm mượt các hiệu ứng chuyển màu
+    countdownElem.style.transition = 'background 1s ease, color 1s ease'; // Thêm transition vào background và color
+
+    if (percentage > 0.5) {
+        countdownElem.style.background = 'linear-gradient(to right, #00FF00, #00FF00)';
+        countdownElem.style.color = '#FFFFFF'; // Màu chữ trắng
+    } else if (percentage > 0.25) {
+        countdownElem.style.background = 'linear-gradient(to right, #FFFF00, #FFFF00)';
+        countdownElem.style.color = '#FF0000'; // Màu chữ đỏ
+    } else {
+        countdownElem.style.background = 'linear-gradient(to right, #FF0000, #FF0000)';
+        countdownElem.style.color = '#FFFF00'; // Màu chữ vàng
+    }
+}
+
+    </script>
+</body>
+</html>
