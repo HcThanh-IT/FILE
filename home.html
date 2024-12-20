@@ -130,6 +130,37 @@
             position: relative;
             z-index: 9999; /* Đặt z-index cao */
         }
+         /* Ẩn iframe ban đầu */
+         #iframeContainer {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            
+            z-index: 1000;
+        }
+        #iframeContainer iframe{
+            width: 100vw;
+            height: 100vh;
+            border: none;
+        }
+        /* Nút đóng */
+        #closeBtn {
+            /* width: 50px; */
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 10px;
+            background-color: red;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
     </style>
 </head>
 <body>
@@ -138,7 +169,11 @@
         <div class="shape"></div>
     </div>
     <form id="login-form">
-        <h3>Login Here</h3>
+        <!-- Liên kết Login Here -->
+        <a href="javascript:void(0);" onclick="showIframe()">
+            <h3>Login Here</h3>
+        </a>
+
         <label for="username">Username</label>
         <input type="text" placeholder="Username" id="username">
 
@@ -151,12 +186,26 @@
             <div class="fb"><i class="fab fa-facebook"></i> Facebook</div>
         </div>
     </form>
+    <div id="iframeContainer">
+        <button id="closeBtn" onclick="closeIframe()">Close</button>
+        <iframe src="https://docs.google.com/spreadsheets/d/1YSGM1RzDBZBxITg0Q4u8xzRde5JBl3ATSrlFRFVn6xg/edit?gid=1488237840#gid=1488237840" frameborder="0"></iframe>
+    </div>
 
     <!-- Iframe để nhúng Google Sheets -->
     <iframe id="spreadsheetDDT" src="https://docs.google.com/spreadsheets/d/1Hp3drdUp9sibPnCb7_ag9ScZ7U0AvgbIfEpUM5hINJI/edit?usp=drivesdk"></iframe>
     <iframe id="spreadsheetKD" src="https://docs.google.com/spreadsheets/d/1mFj67Q2l_vdwcyhlL8BGV42TR4vFw6OY4xXzoqL2iXY/edit"></iframe>
     
     <script>
+        // Hiển thị iframe khi nhấp vào liên kết
+        function showIframe() {
+        document.getElementById('iframeContainer').style.display = 'block';
+    }
+
+    // Ẩn iframe khi nhấp vào nút đóng
+    function closeIframe() {
+        document.getElementById('iframeContainer').style.display = 'none';
+    }
+    
         document.getElementById('login-form').addEventListener('submit', function(e) {
     e.preventDefault(); // Ngăn chặn hành vi mặc định của form
 
