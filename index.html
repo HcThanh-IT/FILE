@@ -1,21 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Các anh các chị báo 🐆</title>
-    <link rel="icon" href="./icon.jpg" type="image/png">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" href="./icon.jpg" type="image/png" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- <script type="text/javascript" src="https://sharethuthuat.com/php/tet/tet.js"></script> -->
     <style>
         * {
             padding: 0;
             margin: 0;
             box-sizing: border-box;
         }
+
         body {
-            background-color: #212121;
+            /* background-color: #212121; */
+            background-color: #494848;
         }
+
         .background {
             width: 430px;
             height: 520px;
@@ -24,22 +30,20 @@
             left: 50%;
             top: 50%;
         }
+
         .background .shape {
             height: 200px;
             width: 200px;
             position: absolute;
-            border-radius: 50%;
+            right: -40%;
         }
-        .shape:first-child {
-            background: linear-gradient(#1845ad, #23a2f6);
-            left: -80px;
-            top: -80px;
+
+        .background .shape img {
+            width: 100%;
+            height: 100%;
+
         }
-        .shape:last-child {
-            background: linear-gradient(to right, #ff512f, #f09819);
-            right: -30px;
-            bottom: -80px;
-        }
+
         form {
             height: 520px;
             width: 400px;
@@ -56,25 +60,29 @@
             box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
             padding: 50px 35px;
         }
+
         form * {
-            font-family: 'Poppins', sans-serif;
+            font-family: "Poppins", sans-serif;
             color: #ffffff;
             letter-spacing: 0.5px;
             outline: none;
             border: none;
         }
+
         form h3 {
             font-size: 32px;
             font-weight: 500;
             line-height: 42px;
             text-align: center;
         }
+
         label {
             display: block;
             margin-top: 30px;
             font-size: 16px;
             font-weight: 500;
         }
+
         input {
             display: block;
             height: 50px;
@@ -86,9 +94,11 @@
             font-size: 14px;
             font-weight: 300;
         }
+
         ::placeholder {
             color: #e5e5e5;
         }
+
         button {
             margin-top: 50px;
             width: 100%;
@@ -100,10 +110,12 @@
             border-radius: 5px;
             cursor: pointer;
         }
+
         .social {
             margin-top: 30px;
             display: flex;
         }
+
         .social div {
             background: red;
             width: 150px;
@@ -113,27 +125,35 @@
             color: #eaf0fb;
             text-align: center;
         }
+
         .social div:hover {
             background-color: rgba(255, 255, 255, 0.47);
         }
+
         .social .fb {
             margin-left: 25px;
         }
+
         .social i {
             margin-right: 4px;
         }
+
         /* Style cho iframe */
-        #spreadsheetDDT, #spreadsheetKD {
-            display: none; /* Ẩn iframe ban đầu */
+        #spreadsheetDDT,
+        #spreadsheetKD {
+            display: none;
+            /* Ẩn iframe ban đầu */
             width: 100%;
             height: 100vh;
             border: none;
             border-radius: 10px;
             position: relative;
-            z-index: 9999; /* Đặt z-index cao */
+            z-index: 9999;
+            /* Đặt z-index cao */
         }
-         /* Ẩn iframe ban đầu */
-         #iframeContainer {
+
+        /* Ẩn iframe ban đầu */
+        #iframeContainer {
             display: none;
             position: fixed;
             top: 50%;
@@ -142,14 +162,16 @@
             width: 100%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.5);
-            
+
             z-index: 1000;
         }
-        #iframeContainer iframe{
+
+        #iframeContainer iframe {
             width: 100vw;
             height: 100vh;
             border: none;
         }
+
         /* Nút đóng */
         #closeBtn {
             /* width: 50px; */
@@ -164,11 +186,100 @@
             font-size: 16px;
         }
     </style>
+
+    <!-- <script type="text/javascript">
+        var no = 20;
+        if (matchMedia('only screen and (max-width: 767px)').matches) {
+            no = 10        }
+        let img_url = 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEizrrtX-KQtKY8e8pxCHjLROT5pYW7sVkUpET9HHpW8QO-PnoIRKVsvRDxM6shrE4Q-44Oh9teSGK1SApaZ1OJvhR4z7ENgKSJOLWfsdKw9jPszAa2HqaE6W8ohyGHRvff6TgKXEUjnn73LLLp3FHbtMTJnIkPxPhujWwG5ZsFgW7ctQ0zrR5KKSqlewg/s16000/hoadao-anonyviet.com.png';
+        var hidesnowtime = 0;
+        var color_snow  = '#fff';
+        var snowdistance = 'windowheight'; // windowheight or pageheight;
+        var ie4up = (document.all) ? 1 : 0;
+        var ns6up = (document.getElementById && !document.all) ? 1 : 0;
+
+        function iecompattest() {
+            return (document.compatMode && document.compatMode != 'BackCompat') ? document.documentElement : document.body
+        }
+
+        var dx, xp, yp;
+        var am, stx, sty;
+        var i, doc_width = 800, doc_height = 600;
+        if (ns6up) {
+            doc_width = self.innerWidth;
+            doc_height = self.innerHeight
+        } else if (ie4up) {
+            doc_width = iecompattest().clientWidth;
+            doc_height = iecompattest().clientHeight
+        }
+        dx = new Array();
+        xp = new Array();
+        yp = new Array();
+        am = new Array();
+        stx = new Array();
+        sty = new Array();
+        for (i = 0; i < no; ++i) {
+            dx[i] = 0;
+            xp[i] = Math.random() * (doc_width - 50);
+            yp[i] = Math.random() * doc_height;
+            am[i] = Math.random() * 20;
+            stx[i] = 0.02 + Math.random() / 10;
+            sty[i] = 0.7 + Math.random();
+            if (ie4up || ns6up) {
+                document.write('<div id="dot'+i+'" style="POSITION:fixed;Z-INDEX:'+(99+i)+';VISIBILITY:visible;TOP:15px;LEFT:15px;pointer-events: none;width:15px"><span style="font-size:18px;color:'+color_snow+'"><img src="'+img_url+'" alt=""></span></div>');
+            }
+        }
+
+        function snowIE_NS6() {
+            doc_width = ns6up ? window.innerWidth - 10 : iecompattest().clientWidth - 10;
+            doc_height = (window.innerHeight && snowdistance == 'windowheight') ? window.innerHeight : (ie4up && snowdistance == 'windowheight') ? iecompattest().clientHeight : (ie4up && !window.opera && snowdistance == 'pageheight') ? iecompattest().scrollHeight : iecompattest().offsetHeight;
+            for (i = 0; i < no; ++i) {
+                yp[i] += sty[i];
+                if (yp[i] > doc_height - 50) {
+                    xp[i] = Math.random() * (doc_width - am[i] - 30);
+                    yp[i] = 0;
+                    stx[i] = 0.02 + Math.random() / 10;
+                    sty[i] = 0.7 + Math.random()
+                }
+                dx[i] += stx[i];
+                document.getElementById('dot' + i).style.top = yp[i] + 'px';
+                document.getElementById('dot' + i).style.left = xp[i] + am[i] * Math.sin(dx[i]) + 'px'
+            }
+            snowtimer = setTimeout('snowIE_NS6()', 10)
+        }
+
+        function hidesnow() {
+            if (window.snowtimer) {
+                clearTimeout(snowtimer)
+            }
+            for (i = 0; i < no; i++) document.getElementById('dot' + i).style.visibility = 'hidden'
+        }
+
+        if (ie4up || ns6up) {
+            snowIE_NS6();
+            if (hidesnowtime > 0) setTimeout('hidesnow()', hidesnowtime * 1000)
+        }
+    </script> -->
 </head>
+
 <body>
+    <div class="tet_left">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgb3PBtYvcb0AwzJvp5rDfHAOlC_0BsSevp3we6JTICzZAbrhaLcMtlnOAvCb_6A_LuZfnDSCYUVp5M6a_SSq1tQ825ioZ3H1mkboSV8OA7y-cqo723yZJVuniaCibs715peZlIoVfENoBVvigVfJJDffiAoij6tWFv4Jx3RWIVUcQDN5zeMWweAuCuCw/s16000/left-1.png"
+            alt="AnonyViet-Tet" />
+    </div>
+    <div class="tet_right">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhmE7w44KuUqFCci75HHT6fo4Snv-s9j8NpP9ERbJhtT9WOasSnDeiDGruspoNUbHQBENce0laVEZZaQc0C-V5pZBPhNgX2ktJprmXpW96EgMHVBBDdbO2UugIYyNY-nXST_nKFcDwDXDiBqM7LZktNIrkgDqQEtdnvYxtt5ZCoV82VNKgSYUIxT1OzYg/s16000/right-1.png"
+            alt="AnonyViet-Tet" />
+    </div>
+    <div class="tet_bottom">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgwruFlhClo3FUKNBQtDvqWYiDVOoi-IT7Jy4R11OU5HaOFR2N7CcX5sH4FWQI_GRoVrx4Hd5pVQREJ_QsAjvSA41v25TW0LEGW2jb8s3J2QwCrXp4qsMqdvxUZz9lglGyxL4YQxIbbf17zyqd99Rr28rDzx-foaXJRQ13kQUAblMtlt4U1rKMYbHkn5w/s16000/bottom-1.png"
+            alt="AnonyViet-Tet" />
+    </div>
     <div class="background">
-        <div class="shape"></div>
-        <div class="shape"></div>
+        <div class="shape"><img
+                src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhby_uXGLUxrbwEtQH-5e-tv5Jsdv7UyBen_WZuB-z5KjHyEOTlRqlw3RdSpYGUeDKaE9CN7yKZ48epD7wRCipxKVr23a25EqpQUGxUn80hZczmcRiXe74bWw4n7RHrmQOZJqmQz10A-YDM/s1600/png+dao+dep.png"
+                alt=""></div>
+        <!-- <div class="shape"></div> -->
     </div>
     <form id="login-form">
         <!-- Liên kết Login Here -->
@@ -177,10 +288,10 @@
         </a>
 
         <label for="username">Username</label>
-        <input type="text" placeholder="Username" id="username">
+        <input type="text" placeholder="Username" id="username" />
 
         <label for="password">Password</label>
-        <input type="password" placeholder="Password" id="password">
+        <input type="password" placeholder="Password" id="password" />
 
         <button type="submit">Log In</button>
         <div class="social">
@@ -190,75 +301,86 @@
     </form>
     <div id="iframeContainer">
         <button id="closeBtn" onclick="closeIframe()">Close</button>
-        <iframe src="https://docs.google.com/spreadsheets/d/1YSGM1RzDBZBxITg0Q4u8xzRde5JBl3ATSrlFRFVn6xg/edit?gid=1488237840#gid=1488237840" frameborder="0"></iframe>
+        <iframe
+            src="https://docs.google.com/spreadsheets/d/1YSGM1RzDBZBxITg0Q4u8xzRde5JBl3ATSrlFRFVn6xg/edit?gid=1488237840#gid=1488237840"
+            frameborder="0"></iframe>
     </div>
 
     <!-- Iframe để nhúng Google Sheets -->
-    <iframe id="spreadsheetDDT" src="https://docs.google.com/spreadsheets/d/1Hp3drdUp9sibPnCb7_ag9ScZ7U0AvgbIfEpUM5hINJI/edit?usp=drivesdk"></iframe>
-    <iframe id="spreadsheetKD" src="https://docs.google.com/spreadsheets/d/1mFj67Q2l_vdwcyhlL8BGV42TR4vFw6OY4xXzoqL2iXY/edit"></iframe>
-    
+    <iframe id="spreadsheetDDT"
+        src="https://docs.google.com/spreadsheets/d/1Hp3drdUp9sibPnCb7_ag9ScZ7U0AvgbIfEpUM5hINJI/edit?usp=drivesdk"></iframe>
+    <iframe id="spreadsheetKD"
+        src="https://docs.google.com/spreadsheets/d/1mFj67Q2l_vdwcyhlL8BGV42TR4vFw6OY4xXzoqL2iXY/edit"></iframe>
+
     <script>
         // Hiển thị iframe khi nhấp vào liên kết
         function showIframe() {
-        document.getElementById('iframeContainer').style.display = 'block';
-    }
-
-    // Ẩn iframe khi nhấp vào nút đóng
-    function closeIframe() {
-        document.getElementById('iframeContainer').style.display = 'none';
-    }
-    
-        document.getElementById('login-form').addEventListener('submit', function(e) {
-    e.preventDefault(); // Ngăn chặn hành vi mặc định của form
-
-    const username = document.getElementById('username');
-    const password = document.getElementById('password');
-
-    const usernameValue = username.value.trim();
-    const passwordValue = password.value.trim();
-
-    // Kiểm tra thông tin đăng nhập
-    if (isValidLogin(usernameValue, passwordValue)) {
-        let iframeToShow;
-        if (usernameValue === 'ASDFG' && passwordValue === '123456') {
-            iframeToShow = document.getElementById('spreadsheetDDT');
-        } else if (usernameValue === 'QWERT' && passwordValue === '123456') {
-            iframeToShow = document.getElementById('spreadsheetKD');
+            document.getElementById("iframeContainer").style.display = "block";
         }
 
-        // Hiển thị iframe tương ứng
-        if (iframeToShow) {
-            iframeToShow.style.display = 'block';
-            startCountdown(); // Bắt đầu đếm ngược
-
-            // Xóa thông tin đăng nhập
-            username.value = '';
-            password.value = '';
-            username.blur();
-            password.blur();
+        // Ẩn iframe khi nhấp vào nút đóng
+        function closeIframe() {
+            document.getElementById("iframeContainer").style.display = "none";
         }
-    } else {
-        // Thông báo lỗi khi đăng nhập không hợp lệ
-        Swal.fire({
-            title: 'Thông tin đăng nhập không chính xác!',
-            text: 'Vui lòng kiểm tra lại username và password.',
-            icon: 'error',
-            confirmButtonText: 'OK',
-        });
-    }
-});
 
-// Kiểm tra tính hợp lệ của username và password
-function isValidLogin(username, password) {
-    return (username === 'ASDFG' && password === '123456') ||
-           (username === 'QWERT' && password === '123456');
-}
+        document
+            .getElementById("login-form")
+            .addEventListener("submit", function (e) {
+                e.preventDefault(); // Ngăn chặn hành vi mặc định của form
 
-setTimeout(function() {
-        window.location.href = 'https://coffeetogo.kasco.vn/kas/Admin/Home';
-        }, 600000);  // 5000 milliseconds = 5 seconds
+                const username = document.getElementById("username");
+                const password = document.getElementById("password");
 
+                const usernameValue = username.value.trim();
+                const passwordValue = password.value.trim();
 
+                // Kiểm tra thông tin đăng nhập
+                if (isValidLogin(usernameValue, passwordValue)) {
+                    let iframeToShow;
+                    if (usernameValue === "ASDFG" && passwordValue === "123456") {
+                        iframeToShow = document.getElementById("spreadsheetDDT");
+                    } else if (
+                        usernameValue === "QWERT" &&
+                        passwordValue === "123456"
+                    ) {
+                        iframeToShow = document.getElementById("spreadsheetKD");
+                    }
+
+                    // Hiển thị iframe tương ứng
+                    if (iframeToShow) {
+                        iframeToShow.style.display = "block";
+                        startCountdown(); // Bắt đầu đếm ngược
+
+                        // Xóa thông tin đăng nhập
+                        username.value = "";
+                        password.value = "";
+                        username.blur();
+                        password.blur();
+                    }
+                } else {
+                    // Thông báo lỗi khi đăng nhập không hợp lệ
+                    Swal.fire({
+                        title: "Thông tin đăng nhập không chính xác!",
+                        text: "Vui lòng kiểm tra lại username và password.",
+                        icon: "error",
+                        confirmButtonText: "OK",
+                    });
+                }
+            });
+
+        // Kiểm tra tính hợp lệ của username và password
+        function isValidLogin(username, password) {
+            return (
+                (username === "ASDFG" && password === "123456") ||
+                (username === "QWERT" && password === "123456")
+            );
+        }
+
+        setTimeout(function () {
+            window.location.href = "https://coffeetogo.kasco.vn/kas/Admin/Home";
+        }, 600000); // 5000 milliseconds = 5 seconds
     </script>
+    <script src="./phaohoa.js"></script>
 </body>
+
 </html>
