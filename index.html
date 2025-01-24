@@ -1,305 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <title>Các anh các chị báo 🐆</title>
-    <link rel="icon" href="./icon.jpg" type="image/png" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <!-- <script type="text/javascript" src="https://sharethuthuat.com/php/tet/tet.js"></script> -->
-    <style>
-        * {
-            padding: 0;
-            margin: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            /* background-color: #212121; */
-            background-color: #494848;
-        }
-
-        .background {
-            width: 430px;
-            height: 520px;
-            position: absolute;
-            transform: translate(-50%, -50%);
-            left: 50%;
-            top: 50%;
-        }
-
-        .background .shape {
-            height: 200px;
-            width: 200px;
-            position: absolute;
-            right: -40%;
-        }
-
-        .background .shape img {
-            width: 100%;
-            height: 100%;
-
-        }
-
-        form {
-            height: 520px;
-            width: 400px;
-            /*background: url(./lolTrungPhan.jpg) no-repeat   center center #505050;   */
-            background-size: cover;
-            background-color: rgba(255, 255, 255, 0.13);
-            position: absolute;
-            transform: translate(-50%, -50%);
-            top: 50%;
-            left: 50%;
-            border-radius: 10px;
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
-            padding: 50px 35px;
-        }
-
-        form * {
-            font-family: "Poppins", sans-serif;
-            color: #ffffff;
-            letter-spacing: 0.5px;
-            outline: none;
-            border: none;
-        }
-
-        form h3 {
-            font-size: 32px;
-            font-weight: 500;
-            line-height: 42px;
-            text-align: center;
-        }
-
-        label {
-            display: block;
-            margin-top: 30px;
-            font-size: 16px;
-            font-weight: 500;
-        }
-
-        input {
-            display: block;
-            height: 50px;
-            width: 100%;
-            background-color: rgba(255, 255, 255, 0.07);
-            border-radius: 3px;
-            padding: 0 10px;
-            margin-top: 8px;
-            font-size: 14px;
-            font-weight: 300;
-        }
-
-        ::placeholder {
-            color: #e5e5e5;
-        }
-
-        button {
-            margin-top: 50px;
-            width: 100%;
-            background-color: #ffffff;
-            color: #080710;
-            padding: 15px 0;
-            font-size: 18px;
-            font-weight: 600;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .social {
-            margin-top: 30px;
-            display: flex;
-        }
-
-        .social div {
-            background: red;
-            width: 150px;
-            border-radius: 3px;
-            padding: 5px 10px 10px 5px;
-            background-color: rgba(255, 255, 255, 0.27);
-            color: #eaf0fb;
-            text-align: center;
-        }
-
-        .social div:hover {
-            background-color: rgba(255, 255, 255, 0.47);
-        }
-
-        .social .fb {
-            margin-left: 25px;
-        }
-
-        .social i {
-            margin-right: 4px;
-        }
-
-        /* Style cho iframe */
-        #spreadsheetDDT,
-        #spreadsheetKD {
-            display: none;
-            /* Ẩn iframe ban đầu */
-            width: 100%;
-            height: 100vh;
-            border: none;
-            border-radius: 10px;
-            position: relative;
-            z-index: 9999;
-            /* Đặt z-index cao */
-        }
-
-        /* Ẩn iframe ban đầu */
-        #iframeContainer {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-
-            z-index: 1000;
-        }
-
-        #iframeContainer iframe {
-            width: 100vw;
-            height: 100vh;
-            border: none;
-        }
-
-        /* Nút đóng */
-        #closeBtn {
-            /* width: 50px; */
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            padding: 10px;
-            background-color: red;
-            color: white;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-        }
-    </style>
-
-    <!-- <script type="text/javascript">
-        var no = 20;
-        if (matchMedia('only screen and (max-width: 767px)').matches) {
-            no = 10        }
-        let img_url = 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEizrrtX-KQtKY8e8pxCHjLROT5pYW7sVkUpET9HHpW8QO-PnoIRKVsvRDxM6shrE4Q-44Oh9teSGK1SApaZ1OJvhR4z7ENgKSJOLWfsdKw9jPszAa2HqaE6W8ohyGHRvff6TgKXEUjnn73LLLp3FHbtMTJnIkPxPhujWwG5ZsFgW7ctQ0zrR5KKSqlewg/s16000/hoadao-anonyviet.com.png';
-        var hidesnowtime = 0;
-        var color_snow  = '#fff';
-        var snowdistance = 'windowheight'; // windowheight or pageheight;
-        var ie4up = (document.all) ? 1 : 0;
-        var ns6up = (document.getElementById && !document.all) ? 1 : 0;
-
-        function iecompattest() {
-            return (document.compatMode && document.compatMode != 'BackCompat') ? document.documentElement : document.body
-        }
-
-        var dx, xp, yp;
-        var am, stx, sty;
-        var i, doc_width = 800, doc_height = 600;
-        if (ns6up) {
-            doc_width = self.innerWidth;
-            doc_height = self.innerHeight
-        } else if (ie4up) {
-            doc_width = iecompattest().clientWidth;
-            doc_height = iecompattest().clientHeight
-        }
-        dx = new Array();
-        xp = new Array();
-        yp = new Array();
-        am = new Array();
-        stx = new Array();
-        sty = new Array();
-        for (i = 0; i < no; ++i) {
-            dx[i] = 0;
-            xp[i] = Math.random() * (doc_width - 50);
-            yp[i] = Math.random() * doc_height;
-            am[i] = Math.random() * 20;
-            stx[i] = 0.02 + Math.random() / 10;
-            sty[i] = 0.7 + Math.random();
-            if (ie4up || ns6up) {
-                document.write('<div id="dot'+i+'" style="POSITION:fixed;Z-INDEX:'+(99+i)+';VISIBILITY:visible;TOP:15px;LEFT:15px;pointer-events: none;width:15px"><span style="font-size:18px;color:'+color_snow+'"><img src="'+img_url+'" alt=""></span></div>');
-            }
-        }
-
-        function snowIE_NS6() {
-            doc_width = ns6up ? window.innerWidth - 10 : iecompattest().clientWidth - 10;
-            doc_height = (window.innerHeight && snowdistance == 'windowheight') ? window.innerHeight : (ie4up && snowdistance == 'windowheight') ? iecompattest().clientHeight : (ie4up && !window.opera && snowdistance == 'pageheight') ? iecompattest().scrollHeight : iecompattest().offsetHeight;
-            for (i = 0; i < no; ++i) {
-                yp[i] += sty[i];
-                if (yp[i] > doc_height - 50) {
-                    xp[i] = Math.random() * (doc_width - am[i] - 30);
-                    yp[i] = 0;
-                    stx[i] = 0.02 + Math.random() / 10;
-                    sty[i] = 0.7 + Math.random()
-                }
-                dx[i] += stx[i];
-                document.getElementById('dot' + i).style.top = yp[i] + 'px';
-                document.getElementById('dot' + i).style.left = xp[i] + am[i] * Math.sin(dx[i]) + 'px'
-            }
-            snowtimer = setTimeout('snowIE_NS6()', 10)
-        }
-
-        function hidesnow() {
-            if (window.snowtimer) {
-                clearTimeout(snowtimer)
-            }
-            for (i = 0; i < no; i++) document.getElementById('dot' + i).style.visibility = 'hidden'
-        }
-
-        if (ie4up || ns6up) {
-            snowIE_NS6();
-            if (hidesnowtime > 0) setTimeout('hidesnow()', hidesnowtime * 1000)
-        }
-    </script> -->
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  <title>Các anh các chị báo 🐆</title>
+  <link rel="icon" href="./icon.jpg" type="image/png" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
-
 <body>
-    <div class="tet_left">
-        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgb3PBtYvcb0AwzJvp5rDfHAOlC_0BsSevp3we6JTICzZAbrhaLcMtlnOAvCb_6A_LuZfnDSCYUVp5M6a_SSq1tQ825ioZ3H1mkboSV8OA7y-cqo723yZJVuniaCibs715peZlIoVfENoBVvigVfJJDffiAoij6tWFv4Jx3RWIVUcQDN5zeMWweAuCuCw/s16000/left-1.png"
-            alt="AnonyViet-Tet" />
-    </div>
-    <div class="tet_right">
-        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhmE7w44KuUqFCci75HHT6fo4Snv-s9j8NpP9ERbJhtT9WOasSnDeiDGruspoNUbHQBENce0laVEZZaQc0C-V5pZBPhNgX2ktJprmXpW96EgMHVBBDdbO2UugIYyNY-nXST_nKFcDwDXDiBqM7LZktNIrkgDqQEtdnvYxtt5ZCoV82VNKgSYUIxT1OzYg/s16000/right-1.png"
-            alt="AnonyViet-Tet" />
-    </div>
-    <div class="tet_bottom">
-        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgwruFlhClo3FUKNBQtDvqWYiDVOoi-IT7Jy4R11OU5HaOFR2N7CcX5sH4FWQI_GRoVrx4Hd5pVQREJ_QsAjvSA41v25TW0LEGW2jb8s3J2QwCrXp4qsMqdvxUZz9lglGyxL4YQxIbbf17zyqd99Rr28rDzx-foaXJRQ13kQUAblMtlt4U1rKMYbHkn5w/s16000/bottom-1.png"
-            alt="AnonyViet-Tet" />
-    </div>
-    <div class="background">
-        <div class="shape"><img
-                src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhby_uXGLUxrbwEtQH-5e-tv5Jsdv7UyBen_WZuB-z5KjHyEOTlRqlw3RdSpYGUeDKaE9CN7yKZ48epD7wRCipxKVr23a25EqpQUGxUn80hZczmcRiXe74bWw4n7RHrmQOZJqmQz10A-YDM/s1600/png+dao+dep.png"
-                alt=""></div>
-        <!-- <div class="shape"></div> -->
-    </div>
-    <form id="login-form">
-        <!-- Liên kết Login Here -->
-        <a href="javascript:void(0);" onclick="showIframe()">
-            <h3>Login Here</h3>
+    
+  <div class="wrapper">
+    <form action="" id="login-form">
+       <a style="text-decoration: none; color: red;" href="javascript:void(0);" onclick="showIframe()">
+            <h1>Login Here</h1>
         </a>
+      <div class="input-box">
+        <input type="text" placeholder="Username" id="username" required>
+        <i class='bx bxs-user'></i>
+      </div>
 
-        <label for="username">Username</label>
-        <input type="text" placeholder="Username" id="username" />
-
-        <label for="password">Password</label>
-        <input type="password" placeholder="Password" id="password" />
-
-        <button type="submit">Log In</button>
-        <div class="social">
-            <div class="go"><i class="fab fa-google"></i> Google</div>
-            <div class="fb"><i class="fab fa-facebook"></i> Facebook</div>
-        </div>
+      <div class="input-box">
+        <input type="password" placeholder="Password" id="password" required>
+        <i class='bx bxs-lock-alt' ></i>
+      </div>
+      <div class="remember-forgot">
+        <label><input type="checkbox">Remember me</label>
+        <a href="#">Forgot password</a>
+      </div>
+      <button type="submit" class="btn">Login</button>
+      <div class="register-link">
+        <p>Don't have an account? <a href="#">Register</a></p>
+      </div>
     </form>
-    <div id="iframeContainer">
+
+  </div>
+  <div id="iframeContainer">
         <button id="closeBtn" onclick="closeIframe()">Close</button>
         <iframe
             src="https://docs.google.com/spreadsheets/d/1YSGM1RzDBZBxITg0Q4u8xzRde5JBl3ATSrlFRFVn6xg/edit?gid=1488237840#gid=1488237840"
@@ -380,7 +119,5 @@
             window.location.href = "https://coffeetogo.kasco.vn/kas/Admin/Home";
         }, 600000); // 5000 milliseconds = 5 seconds
     </script>
-    <script src="./phaohoa.js"></script>
 </body>
-
 </html>
