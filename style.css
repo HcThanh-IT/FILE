@@ -1,80 +1,96 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins",sans-serif;
-  }
-  body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: url('bgr.jpeg') no-repeat;
-    background-size: cover;
-    background-position: center;
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
 
-  .wrapper {
-    position: absolute;
-    width: 420px;
-    background: transparent;
-    border: 2px solid red;
-    backdrop-filter: blur(100px);
-    box-shadow: 0 0 10px rgba(0, 0, 0 , .7);
-    color: red;
-    border-radius: 10px;
-    padding: 30px 40px;
-    right: 50%;
-    transform: translateX(50%);
-  }
-  .wrapper h1 {
-    font-size: 36px;
-    text-align: center;
-  }
-  .wrapper .input-box {
-    width: 100%;
-    height: 50px;
-    margin: 30px 0;
-  }
-  .input-box input {
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    border: none;
-    outline: none;
-    border: 2px solid red;
-    border-radius: 40px;
-    font-size: 16px;
-    color: rgb(255, 255, 255);
-    padding: 20px 45px 20px 20px;
-  }
+:root {
+  --white-color: #FFF;
+  --red-color: #FF0000;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: url('bgr.jpeg') no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.wrapper {
+  position: absolute;
+  width: 420px;
+  background: transparent;
+  border: 2px solid var(--red-color);
+  backdrop-filter: blur(100px);
+  box-shadow: 0 0 10px rgba(0, 0, 0, .7);
+  color: var(--white-color);
+  border-radius: 10px;
+  padding: 30px 40px;
+  right: 50%;
+  transform: translateX(50%);
+}
+
+.wrapper h1 {
+  font-size: 36px;
+  text-align: center;
+}
+
+.wrapper .input-box {
+  width: 100%;
+  height: 50px;
+  margin: 30px 0;
+}
+
+.input-box input {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  border: 2px solid var(--red-color);
+  border-radius: 40px;
+  font-size: 16px;
+  color: var(--white-color);
+  padding: 20px 45px 20px 20px;
+}
+
 .input-box input::placeholder {
-  color: red;
+  color: var(--white-color);
 }
+
 .input-box i {
-    position: absolute;
-    right: 50px;
-    margin-top: 24px;
-    transform: translateY(-50%);
-    font-size: 20px;
+  position: absolute;
+  right: 50px;
+  margin-top: 24px;
+  transform: translateY(-50%);
+  font-size: 20px;
 }
+
 .wrapper .remember-forgot {
   display: flex;
   justify-content: space-between;
   font-size: 14.5;
   margin: -15px 0 15px;
 }
+
 .remember-forgot label input {
-  accent-color: #fff;
+  accent-color: var(--white-color);
   margin-right: 3px;
 }
+
 .remember-forgot a {
-  color: red;
+  color: var(--white-color);  
   text-decoration: none;
 }
+
 .remember-forgot a:hover {
   text-decoration: underline;
 }
+
 .wrapper .btn {
   width: 100%;
   height: 45px;
@@ -88,68 +104,62 @@
   color: black;
   font-weight: 600;
 }
+
 .wrapper .register-link {
   font-size: 14.5px;
   text-align: center;
   margin: 20px 0 15px;
 }
-.register-link p a{
+
+.register-link p a {
   color: red;
   text-decoration: none;
   font-weight: 600;
 }
+
 .register-link p a:hover {
   text-decoration: underline;
 }
 
 
-/* Style cho iframe */
-        #spreadsheetDDT,
-        #spreadsheetKD {
-            display: none;
-            /* Ẩn iframe ban đầu */
-            width: 100%;
-            height: 100vh;
-            border: none;
-            border-radius: 10px;
-            position: relative;
-            z-index: 9999;
-            /* Đặt z-index cao */
-        }
+#spreadsheetDDT,
+#spreadsheetKD {
+  display: none;
+  width: 100%;
+  height: 100vh;
+  border: none;
+  border-radius: 10px;
+  position: relative;
+  z-index: 9999;
+}
 
-        /* Ẩn iframe ban đầu */
-        #iframeContainer {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
+#iframeContainer {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
 
-            z-index: 1000;
-        }
+#iframeContainer iframe {
+  width: 100vw;
+  height: 100vh;
+  border: none;
+}
 
-        #iframeContainer iframe {
-            width: 100vw;
-            height: 100vh;
-            border: none;
-        }
-
-        /* Nút đóng */
-        #closeBtn {
-            /* width: 50px; */
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            padding: 10px;
-            background-color: red;
-            color: white;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-
-
+#closeBtn {
+  /* width: 50px; */
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 10px;
+  background-color: red;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
