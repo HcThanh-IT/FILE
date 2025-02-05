@@ -31,7 +31,7 @@
             </div>
             <div class="remember-forgot">
                 <label><input type="checkbox">Remember me</label>
-                <a href="https://on.soundcloud.com/1DMm56EzfrqfriHq9" target="_blank">Zalo</a>
+                <a href="javascript:void(0);" onclick="showIframe1()">Đề xuất</a>
             </div>
             <button type="submit" class="btn">Login</button>
             <div class="register-link">
@@ -46,6 +46,12 @@
             src="https://docs.google.com/spreadsheets/d/1YSGM1RzDBZBxITg0Q4u8xzRde5JBl3ATSrlFRFVn6xg/edit?gid=1488237840#gid=1488237840"
             frameborder="0"></iframe>
     </div>
+    <div id="iframeContainer1">
+        <button id="closeBtn" onclick="closeIframe1()">Close</button>
+        <iframe
+            src="https://docs.google.com/spreadsheets/d/1-O90-T93pTHu57_OQAG1x4Adx8vJpqfFWaYMOmJiEoI/edit?gid=419745935#gid=419745935"
+            frameborder="0"></iframe>
+    </div>
 
     <iframe id="spreadsheetDDT"
         src="https://docs.google.com/spreadsheets/d/1Hp3drdUp9sibPnCb7_ag9ScZ7U0AvgbIfEpUM5hINJI/edit?usp=drivesdk"></iframe>
@@ -58,6 +64,12 @@
         }
         function closeIframe() {
             document.getElementById("iframeContainer").style.display = "none";
+        }
+        function showIframe1() {
+            document.getElementById("iframeContainer1").style.display = "block";
+        }
+        function closeIframe1() {
+            document.getElementById("iframeContainer1").style.display = "none";
         }
 
         document
