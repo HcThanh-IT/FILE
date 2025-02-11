@@ -179,3 +179,35 @@ body {
   cursor: pointer;
   font-size: 16px;
 }
+
+/* CHECK BOX */
+
+        /* Ẩn checkbox mặc định */
+        input[type="checkbox"] {
+            display: none;
+        }
+
+        /* Tạo một ô checkbox tùy chỉnh */
+        label {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            /* border: 2px solid #000; */
+            text-align: center;
+            font-size: 40px;
+            cursor: pointer;
+            user-select: none;
+            line-height: 48px;
+            position: fixed;
+            bottom: 10px; /* Cách mép dưới 10px */
+            left: 10px;   /* Cách mép trái 10px */
+            background-color: #e00c0c;
+            border-radius: 5px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Khi checkbox được check, hiển thị 🖕 */
+        input[type="checkbox"]:checked + label::after {
+            content: "🖕";
+            display: inline-block;
+        }

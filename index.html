@@ -14,9 +14,11 @@
 </head>
 
 <body>
-
+    <input type="checkbox" id="customCheckbox">
+    <label for="customCheckbox"></label>
     <div class="wrapper">
         <form action="" id="login-form">
+            
             <a style="text-decoration: none; color: red;" href="javascript:void(0);" onclick="showIframe()">
                 <h1>Login Here</h1>
             </a>
@@ -30,7 +32,7 @@
                 <i class='bx bxs-lock-alt'></i>
             </div>
             <div class="remember-forgot">
-                <!-- <label><input type="checkbox">Remember me</label> -->
+                                
                 <a href="javascript:void(0);" onclick="showIframe1()">Đề xuất đặt hàng</a>
             </div>
             <button type="submit" class="btn">Login</button>
@@ -80,35 +82,45 @@
                 const password = document.getElementById("password");
                 const usernameValue = username.value.trim();
                 const passwordValue = password.value.trim();
-                if (isValidLogin(usernameValue, passwordValue)) {
-                    let iframeToShow;
-                    if (
-                        usernameValue === "ASDFG" && 
-                        passwordValue === "123456"
-                    ) {
-                        iframeToShow = document.getElementById("spreadsheetDDT");
-                    } else if (
-                        usernameValue === "QWERT" &&
-                        passwordValue === "123456"
-                    ) {
-                        iframeToShow = document.getElementById("spreadsheetKD");
+                const check = document.getElementById('customCheckbox');
+                if (check.checked) {
+                    if (isValidLogin(usernameValue, passwordValue)) {
+                        let iframeToShow;
+                        if (
+                            usernameValue === "ASDFG" && 
+                            passwordValue === "123456"
+                        ) {
+                            iframeToShow = document.getElementById("spreadsheetDDT");
+                        } else if (
+                            usernameValue === "QWERT" &&
+                            passwordValue === "123456"
+                        ) {
+                            iframeToShow = document.getElementById("spreadsheetKD");
+                        }
+                        if (iframeToShow) {
+                            iframeToShow.style.display = "block";
+                            startCountdown();
+                            username.value = "";
+                            password.value = "";
+                            username.blur();
+                            password.blur();
+                        }
+                    } else {
+                        Swal.fire({
+                            title: "Thông tin đăng nhập không chính xác!",
+                            text: "Vui lòng kiểm tra lại username và password.",
+                            icon: "error",
+                            confirmButtonText: "OK",
+                        });
                     }
-                    if (iframeToShow) {
-                        iframeToShow.style.display = "block";
-                        startCountdown();
-                        username.value = "";
-                        password.value = "";
-                        username.blur();
-                        password.blur();
+                }else {
+                        Swal.fire({
+                            title: "Không có yêu cầu đăng nhập!",
+                            text: "Vui lòng kiểm tra lại.",
+                            icon: "error",
+                            confirmButtonText: "OK",
+                        });
                     }
-                } else {
-                    Swal.fire({
-                        title: "Thông tin đăng nhập không chính xác!",
-                        text: "Vui lòng kiểm tra lại username và password.",
-                        icon: "error",
-                        confirmButtonText: "OK",
-                    });
-                }
             });
 
         function isValidLogin(username, password) {
